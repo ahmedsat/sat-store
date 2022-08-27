@@ -6,7 +6,7 @@ type Entity interface {
 	// update() (entity, error)
 	// patch() (entity, error)
 	// delete() (entity, error)
-	// findOne(map[string]any) (entity, error)
-	Find(map[string]any) ([]Entity, error)
+	// findOne(map[string]string) (entity, error)
+	Find(map[string]string) ([]Entity, error)
 	New() Entity
 }

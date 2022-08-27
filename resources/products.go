@@ -1,7 +1,6 @@
 package resources
 
 import (
-	"fmt"
 	"strings"
 )
 
@@ -43,45 +42,67 @@ func (p *Product) Create() (Entity, error) {
 
 }
 
-func (p *Product) Find(data map[string]any) ([]Entity, error) {
+func (p *Product) Find(data map[string]string) ([]Entity, error) {
 
-	search := make(map[string]any)
+	var products []Entity
+
+	searchMap := make(map[string]string)
+	searchConditions := ""
 
 	if sId, ok := data["Id"]; ok {
-		search["Id"] = sId
+		searchMap["id"] = sId
 	}
 
 	if sName, ok := data["Name"]; ok {
-		search["Name"] = sName
+		searchMap["name"] = sName
 	}
 
 	if sCategories, ok := data["Categories"]; ok {
-		search["Categories"] = sCategories
+		searchMap["categories"] = sCategories
 	}
 
 	if sPrice, ok := data["Price"]; ok {
-		search["Price"] = sPrice
+		searchMap["price"] = sPrice
 	}
 
 	if sDiscount, ok := data["Discount"]; ok {
-		search["Discount"] = sDiscount
+		searchMap["discount"] = sDiscount
 	}
 
 	if sDescription, ok := data["Description"]; ok {
-		search["Description"] = sDescription
+		searchMap["description"] = sDescription
 	}
 
 	if sImages, ok := data["Images"]; ok {
-		search["Images"] = sImages
+		searchMap["images"] = sImages
 	}
 
-	// rows, err := DB.Query("SELECT * FROM products")
+	if len(searchMap) > 0 {
+		searchConditions += "WHERE "
+		for k, v := range searchMap {
+			searchConditions += k + " = '" + v + "' AND "
+		}
+	}
+	searchConditions = strings.TrimSuffix(searchConditions, "AND ")
+	println(searchConditions)
 
-	// if err != nil {
-	// 	log.Fatal(err)
-	// }
+	rows, err := db.Query("SELECT * FROM products " + searchConditions)
+	if err != nil {
+		return nil, err
+	}
+	defer rows.Close()
 
-	return nil, nil
+	for rows.Next() {
+		var p Product
+		var dbImage string
+		if err = rows.Scan(&p.Id, &p.Name, &p.Categories, &p.Price, &p.Discount, &p.Description, &dbImage); err != nil {
+			return nil, err
+		}
+		p.Images = strings.Split(dbImage, ",")
+		products = append(products, &p)
+	}
+
+	return products, nil
 }
 
 func (p *Product) New() Entity {
