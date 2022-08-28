@@ -1,4 +1,4 @@
-package routes
+package controllers
 
 import (
 	"database/sql"
@@ -29,6 +29,24 @@ func GetAllProducts(c *gin.Context) {
 
 }
 
+func GetOneProduct(c *gin.Context) {
+
+	id := c.Param("id")
+
+	println(id)
+
+	resources.SetDB(DB)
+
+	p := resources.Entity.New(&resources.Product{})
+
+	p, err := p.FindOne(map[string]string{"Id": id})
+	if err != nil {
+		panic(err)
+	}
+
+	c.IndentedJSON(http.StatusOK, p)
+
+}
 func AddProduct(c *gin.Context) {
 
 	resources.SetDB(DB)

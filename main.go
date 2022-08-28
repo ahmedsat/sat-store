@@ -4,7 +4,7 @@ import (
 	"database/sql"
 	"log"
 
-	"github.com/ahmedsat/sat-store/routes"
+	"github.com/ahmedsat/sat-store/controllers"
 	"github.com/gin-gonic/gin"
 
 	_ "github.com/mattn/go-sqlite3"
@@ -32,12 +32,13 @@ func main() {
 
 	defer db.Close()
 
-	routes.DB = db
+	controllers.DB = db
 
 	r := gin.Default()
 
-	r.GET("/api/v1/products", routes.GetAllProducts)
-	r.POST("/api/v1/products", routes.AddProduct)
+	r.GET("/api/v1/products", controllers.GetAllProducts)
+	r.GET("/api/v1/products/:id", controllers.GetOneProduct)
+	r.POST("/api/v1/products", controllers.AddProduct)
 
 	r.Run("localhost:8080")
 

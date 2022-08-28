@@ -2,11 +2,11 @@ package resources
 
 type Entity interface {
 	Create() (Entity, error)
-	// save() (entity, error)
-	// update() (entity, error)
-	// patch() (entity, error)
-	// delete() (entity, error)
-	// findOne(map[string]string) (entity, error)
+	// Save() (entity, error)
+	// Update() (entity, error)
+	// Patch() (entity, error)
+	// Delete() (entity, error)
+	FindOne(map[string]string) (Entity, error)
 	Find(map[string]string) ([]Entity, error)
 	New() Entity
 }
