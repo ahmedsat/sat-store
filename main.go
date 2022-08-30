@@ -5,6 +5,7 @@ import (
 	"log"
 
 	"github.com/ahmedsat/sat-store/controllers"
+	"github.com/ahmedsat/sat-store/routes"
 	"github.com/gin-gonic/gin"
 
 	_ "github.com/mattn/go-sqlite3"
@@ -18,13 +19,15 @@ import (
 //		password  string
 //		privilege string
 //	}
-var db *sql.DB
+
+
+
+
+
 
 func main() {
 
-	var err error
-
-	db, err = sql.Open("sqlite3", "database.db")
+	db, err := sql.Open("sqlite3", "database.db")
 
 	if err != nil {
 		log.Fatal(err)
@@ -36,13 +39,16 @@ func main() {
 
 	r := gin.Default()
 
-	r.GET("/api/v1/products", controllers.GetAllProducts)
-	r.GET("/api/v1/products/:id", controllers.GetOneProduct)
-	r.POST("/api/v1/products", controllers.AddProduct)
+	routes.GetRoutes(r)
+
+	
+	
 
 	r.Run("localhost:8080")
 
 }
+
+
 
 // func allUsers() ([]user, error) {
 // 	var users []user

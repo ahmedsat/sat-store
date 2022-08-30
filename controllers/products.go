@@ -4,7 +4,8 @@ import (
 	"database/sql"
 	"net/http"
 
-	"github.com/ahmedsat/sat-store/resources"
+	"github.com/ahmedsat/sat-store/services"
+	"github.com/ahmedsat/sat-store/services/product"
 	"github.com/gin-gonic/gin"
 )
 
@@ -12,9 +13,9 @@ var DB *sql.DB
 
 func GetAllProducts(c *gin.Context) {
 
-	resources.SetDB(DB)
+	services.SetDB(DB)
 
-	p := resources.Entity.New(&resources.Product{})
+	p := services.Entity.New(&product.Product{})
 
 	products, err := p.Find(map[string]string{})
 	if err != nil {
@@ -23,7 +24,7 @@ func GetAllProducts(c *gin.Context) {
 
 	result := struct {
 		Size int
-		Data []resources.Entity
+		Data []services.Entity
 	}{len(products), products}
 	c.IndentedJSON(http.StatusOK, result)
 
@@ -35,9 +36,9 @@ func GetOneProduct(c *gin.Context) {
 
 	println(id)
 
-	resources.SetDB(DB)
+	services.SetDB(DB)
 
-	p := resources.Entity.New(&resources.Product{})
+	p := services.Entity.New(&product.Product{})
 
 	p, err := p.FindOne(map[string]string{"Id": id})
 	if err != nil {
@@ -47,11 +48,12 @@ func GetOneProduct(c *gin.Context) {
 	c.IndentedJSON(http.StatusOK, p)
 
 }
+
 func AddProduct(c *gin.Context) {
 
-	resources.SetDB(DB)
+	services.SetDB(DB)
 
-	var product *resources.Product
+	var product *product.Product
 	if err := c.BindJSON(&product); err != nil {
 		panic(err)
 	}

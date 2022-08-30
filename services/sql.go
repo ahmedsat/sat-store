@@ -1,9 +1,9 @@
-package resources
+package services
 
 import "database/sql"
 
-var db *sql.DB
+var DB *sql.DB
 
 func SetDB(dbAddress *sql.DB) {
-	db = dbAddress
+	DB = dbAddress
 }

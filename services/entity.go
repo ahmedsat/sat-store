@@ -1,4 +1,4 @@
-package resources
+package services
 
 type Entity interface {
 	Create() (Entity, error)

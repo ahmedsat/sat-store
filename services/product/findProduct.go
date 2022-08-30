@@ -1,14 +1,18 @@
-package resources
+package product
 
-import "strings"
+import (
+	"strings"
 
-func (p *Product) Find(data map[string]string) ([]Entity, error) {
+	"github.com/ahmedsat/sat-store/services"
+)
 
-	var products []Entity
+func (p *Product) Find(data map[string]string) ([]services.Entity, error) {
 
-	searchConditions := searchMapParser(data)
+	var products []services.Entity
 
-	rows, err := db.Query("SELECT * FROM products " + searchConditions)
+	searchConditions := services.SearchMapParser(data)
+
+	rows, err := services.DB.Query("SELECT * FROM products " + searchConditions)
 	if err != nil {
 		return nil, err
 	}

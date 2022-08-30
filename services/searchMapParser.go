@@ -1,8 +1,8 @@
-package resources
+package services
 
 import "strings"
 
-func searchMapParser(data map[string]string) string {
+func SearchMapParser(data map[string]string) string {
 	searchMap := make(map[string]string)
 	searchConditions := ""
 	if sId, ok := data["Id"]; ok {

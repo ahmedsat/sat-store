@@ -1,4 +1,6 @@
-package resources
+package product
+
+import "github.com/ahmedsat/sat-store/services"
 
 type Product struct {
 	Id          int     `json:"id"`
@@ -10,6 +12,6 @@ type Product struct {
 	Images      []string
 }
 
-func (p *Product) New() Entity {
+func (p *Product) New() services.Entity {
 	return &Product{}
 }

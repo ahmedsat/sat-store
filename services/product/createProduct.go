@@ -1,10 +1,14 @@
-package resources
+package product
 
-import "strings"
+import (
+	"strings"
 
-func (p *Product) Create() (Entity, error) {
+	"github.com/ahmedsat/sat-store/services"
+)
 
-	add, err := db.Prepare(`--sql
+func (p *Product) Create() (services.Entity, error) {
+
+	add, err := services.DB.Prepare(`--sql
 	insert into products (name,categories,price,discount,description,images)
 	values (?,?,?,?,?,?)
 	`)
