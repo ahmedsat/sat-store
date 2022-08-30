@@ -34,8 +34,6 @@ func GetOneProduct(c *gin.Context) {
 
 	id := c.Param("id")
 
-	println(id)
-
 	services.SetDB(DB)
 
 	p := services.Entity.New(&product.Product{})
@@ -63,4 +61,29 @@ func AddProduct(c *gin.Context) {
 	}
 
 	c.IndentedJSON(http.StatusCreated, product)
+}
+
+func DeleteProduct(c *gin.Context) {
+
+	id := c.Param("id")
+
+	services.SetDB(DB)
+
+	p := services.Entity.New(&product.Product{})
+
+	p, err := p.FindOne(map[string]string{"Id": id})
+	if err != nil {
+		panic(err)
+	}
+
+	result, err := p.Delete(map[string]string{"Id": id})
+	if err != nil {
+		panic(err)
+	}
+
+	if !result {
+		panic("not deleted")
+	}
+
+	c.IndentedJSON(http.StatusOK, p)
 }

@@ -8,7 +8,7 @@ import (
 	"github.com/ahmedsat/sat-store/routes"
 	"github.com/gin-gonic/gin"
 
-	_ "github.com/mattn/go-sqlite3"
+	_ "github.com/gwenn/gosqlite"
 )
 
 //	type user struct {
@@ -19,11 +19,6 @@ import (
 //		password  string
 //		privilege string
 //	}
-
-
-
-
-
 
 func main() {
 
@@ -44,8 +39,6 @@ func main() {
 	r.Run("localhost:8080")
 
 }
-
-
 
 // func allUsers() ([]user, error) {
 // 	var users []user
