@@ -41,9 +41,6 @@ func main() {
 
 	routes.GetRoutes(r)
 
-	
-	
-
 	r.Run("localhost:8080")
 
 }
