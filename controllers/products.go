@@ -2,7 +2,10 @@ package controllers
 
 import (
 	"database/sql"
+	"fmt"
+	"log"
 	"net/http"
+	"strconv"
 
 	"github.com/ahmedsat/sat-store/services"
 	"github.com/ahmedsat/sat-store/services/product"
@@ -86,4 +89,34 @@ func DeleteProduct(c *gin.Context) {
 	}
 
 	c.IndentedJSON(http.StatusOK, p)
+}
+
+func PutProduct(c *gin.Context) {
+	id, err := strconv.Atoi(c.Param("id"))
+	if err != nil {
+		panic(err)
+	}
+	services.SetDB(DB)
+	temp := product.Product{}
+	_, err = temp.FindOne(map[string]string{"Id": fmt.Sprint(id)})
+	if err != nil {
+		panic(err)
+	}
+
+	var product product.Product
+	product.Id = id
+	if err := c.BindJSON(&product); err != nil {
+		panic(err)
+	}
+	p := services.Entity.New(&product)
+
+	log.Println(p)
+
+	p, err = p.Update()
+	if err != nil {
+		panic(err)
+	}
+
+	c.IndentedJSON(http.StatusOK, p)
+
 }

@@ -13,5 +13,5 @@ type Product struct {
 }
 
 func (p *Product) New() services.Entity {
-	return &Product{}
+	return p
 }

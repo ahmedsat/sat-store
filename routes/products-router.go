@@ -5,11 +5,12 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-func productRoutes(rg *gin.RouterGroup){
-	product:=rg.Group("/products")
+func productRoutes(rg *gin.RouterGroup) {
+	product := rg.Group("/products")
 
 	product.GET("/", controllers.GetAllProducts)
 	product.GET("/:id", controllers.GetOneProduct)
 	product.POST("/", controllers.AddProduct)
-	product.DELETE("/:id",controllers.DeleteProduct)
+	product.DELETE("/:id", controllers.DeleteProduct)
+	product.PUT("/:id", controllers.PutProduct)
 }

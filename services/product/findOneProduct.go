@@ -18,20 +18,5 @@ func (p *Product) FindOne(data map[string]string) (services.Entity, error) {
 		return nil, err
 	}
 	p.Images = strings.Split(dbImage, ",")
-	println(p.Images[0])
 	return p, nil
-}
-
-func (p *Product) Delete(data map[string]string) (bool, error) {
-
-	searchConditions := services.SearchMapParser(data)
-
-	// var dbImage string
-
-	_, err := services.DB.Exec("DELETE FROM products " + searchConditions + " LIMIT 1")
-	if err != nil {
-		return false, err
-	}
-
-	return true, nil
 }
