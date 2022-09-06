@@ -8,9 +8,9 @@ import (
 func productRoutes(rg *gin.RouterGroup) {
 	product := rg.Group("/products")
 
+	product.POST("/", controllers.AddProduct)
 	product.GET("/", controllers.GetAllProducts)
 	product.GET("/:id", controllers.GetOneProduct)
-	product.POST("/", controllers.AddProduct)
-	product.DELETE("/:id", controllers.DeleteProduct)
 	product.PUT("/:id", controllers.PutProduct)
+	product.DELETE("/:id", controllers.DeleteProduct)
 }

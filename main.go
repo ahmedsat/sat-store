@@ -1,14 +1,9 @@
 package main
 
 import (
-	"database/sql"
-	"log"
-
-	"github.com/ahmedsat/sat-store/controllers"
-	"github.com/ahmedsat/sat-store/routes"
+	"github.com/ahmedsat/sat-store/database"
 	"github.com/gin-gonic/gin"
-
-	_ "github.com/gwenn/gosqlite"
+	// _ "github.com/gwenn/gosqlite"
 )
 
 //	type user struct {
@@ -22,19 +17,21 @@ import (
 
 func main() {
 
-	db, err := sql.Open("sqlite3", "database.db")
+	// db, err := sql.Open("sqlite3", "database.db")
+	database.Connect("database.db")
+	database.Migrate()
 
-	if err != nil {
-		log.Fatal(err)
-	}
+	// if err != nil {
+	// 	log.Fatal(err)
+	// }
 
-	defer db.Close()
+	// defer db.Close()
 
-	controllers.DB = db
+	// controllers.DB = db
 
 	r := gin.Default()
 
-	routes.GetRoutes(r)
+	// routes.GetRoutes(r)
 
 	r.Run("localhost:8080")
 

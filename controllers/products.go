@@ -7,8 +7,8 @@ import (
 	"net/http"
 	"strconv"
 
+	"github.com/ahmedsat/sat-store/models/product"
 	"github.com/ahmedsat/sat-store/services"
-	"github.com/ahmedsat/sat-store/services/product"
 	"github.com/gin-gonic/gin"
 )
 
