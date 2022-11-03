@@ -30,6 +30,10 @@ i wrote it as a training
 - [ ] select file structure 
 - [x] select database type ( SQLite )
 - [ ] create models ( users - products - categories - cart )
+  - [x] users 
+  - [ ] products
+  - [ ] categories
+  - [ ] cart
 - [ ] setup auth system ( JWT )
 
 ## Routes 
