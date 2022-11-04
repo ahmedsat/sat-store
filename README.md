@@ -27,7 +27,7 @@ i wrote it as a training
 
 ## TODO List 
 
-- [ ] select file structure 
+- [x] select file structure 
 - [x] select database type ( SQLite )
 - [x] create models ( users - products - categories - cart )
   - [x] users 
@@ -35,6 +35,7 @@ i wrote it as a training
   - [x] products
   - [x] cart
 - [ ] create routs
+  - [ ] setup routs gropes
   - [ ] user routs
     - [ ] login
     - [ ] register
