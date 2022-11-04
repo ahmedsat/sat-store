@@ -4,7 +4,7 @@ import (
 	"gorm.io/gorm"
 )
 
-type Product struct {
+type CustomModel struct {
 	gorm.Model
 	Name string `json:"name"`
 }
