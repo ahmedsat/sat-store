@@ -11,17 +11,18 @@ import (
 )
 
 func main() {
+	AutoMigrate := os.Getenv("AUTO_MIGRATE")
+	addr := "localhost:" + os.Getenv("PORT")
 
 	r := gin.Default() // default gin engin
 
 	database.Conn()
 
-	AutoMigrate := os.Getenv("AUTO_MIGRATE")
 	if AutoMigrate == "TRUE" {
 		database.MigrateAll()
 	}
 
 	routes.RootRoutes(r)
-	r.Run("localhost:8080")
+	r.Run(addr)
 
 }

@@ -15,7 +15,7 @@
 # vendor/
 
 # .env file
-*.env
+.env
 
 # .vscode directory
 .vscode/
