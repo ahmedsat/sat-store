@@ -34,6 +34,14 @@ i wrote it as a training
   - [x] categories
   - [x] products
   - [x] cart
+- [ ] create routs
+  - [ ] user routs
+    - [ ] login
+    - [ ] register
+    - [ ] get current user
+  - [ ] product routs
+  - [ ] category routs
+  - [ ] cart routs
 - [ ] setup auth system ( JWT )
 
 ## Routes 
