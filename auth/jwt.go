@@ -11,6 +11,7 @@ import (
 
 var jwtKey = []byte(os.Getenv("JWT_SECRET_KEY"))
 
+// structure for claims in JWT
 type JWTClaim struct {
 	Username   string `json:"username"`
 	Email      string `json:"email"`
@@ -20,7 +21,10 @@ type JWTClaim struct {
 }
 
 func GenerateJWT(user models.User) (tokenString string, err error) {
-	expirationTime := time.Now().Add(24 * 3 * time.Hour)
+
+	expirationTime := time.Now().Add(24 * 3 * time.Hour) // token expire after 3 days
+
+	// destruct user to claims
 	claims := &JWTClaim{
 		Email:      user.Email,
 		Username:   user.Username,
@@ -30,14 +34,13 @@ func GenerateJWT(user models.User) (tokenString string, err error) {
 		},
 	}
 
-	token := jwt.NewWithClaims(jwt.SigningMethodHS256, claims)
-	tokenString, err = token.SignedString(jwtKey)
+	token := jwt.NewWithClaims(jwt.SigningMethodHS256, claims) // generate token
+	tokenString, err = token.SignedString(jwtKey)              // sign token
 
 	return tokenString, err
 }
 
-func ValidateToken(signedToken string) (err error) {
-
+func ValidateToken(signedToken string) (claims *JWTClaim, err error) {
 	token, err := jwt.ParseWithClaims(
 		signedToken,
 		&JWTClaim{},
@@ -45,7 +48,6 @@ func ValidateToken(signedToken string) (err error) {
 			return []byte(jwtKey), nil
 		},
 	)
-
 	if err != nil {
 		return
 	}
