@@ -4,7 +4,7 @@ import "github.com/ahmedsat/sat-store/models"
 
 func MigrateAll() {
 
-	DB.AutoMigrate(
+	Instance.AutoMigrate(
 		&models.Image{},
 		&models.Category{},
 		&models.User{},

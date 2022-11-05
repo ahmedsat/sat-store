@@ -1,9 +1,7 @@
 package models
 
-import "gorm.io/gorm"
-
 type Order struct {
-	gorm.Model
+	CustomModel
 
 	Phone   string `json:"Phone"`
 	Address string `json:"address"`

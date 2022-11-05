@@ -44,6 +44,8 @@ i wrote it as a training
   - [ ] category routs
   - [ ] cart routs
 - [ ] setup auth system ( JWT )
+- [ ] error handling
+  - [ ] UNIQUE constraint failed: users.email
 
 ## Routes 
 
