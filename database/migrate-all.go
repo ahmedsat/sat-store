@@ -9,7 +9,8 @@ func MigrateAll() {
 		&models.Category{},
 		&models.User{},
 		&models.Product{},
-		&models.CartItems{},
+		&models.CartItem{},
+		&models.Order{},
 	)
 
 }

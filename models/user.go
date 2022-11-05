@@ -14,10 +14,11 @@ import (
 type User struct {
 	CustomModel
 
-	Username  string `json:"username" gorm:"unique"`
-	Email     string `json:"email" gorm:"unique"`
-	Password  string `json:"password"`
-	Privilege string `json:"privilege"`
+	Username string `json:"username" gorm:"unique"`
+	Email    string `json:"email" gorm:"unique"`
+	Password string `json:"password"`
+	Phone    string `json:"Phone"`
+	Address  string `json:"address"`
 
 	Privileges string `sql:"type:ENUM('USER', 'ADMIN')" json:"privileges"`
 }
