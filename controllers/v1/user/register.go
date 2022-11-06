@@ -38,7 +38,7 @@ func Register(c *gin.Context) {
 	// generate JWT
 	token, err := auth.GenerateJWT(user)
 	if err != nil {
-		c.JSON(http.StatusInternalServerError, gin.H{"error": record.Error.Error()})
+		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 		c.Abort()
 		return
 	}

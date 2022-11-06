@@ -18,46 +18,46 @@ func V1(rg *gin.RouterGroup) {
 // user router
 func userRouts(rg *gin.RouterGroup) {
 	rg.GET("/", mocController)
-	rg.POST("/login", mocController)
+	rg.POST("/login", userController.Login)
 	rg.POST("/register", userController.Register)
 }
 
 // product router
-func productRouts(rg *gin.RouterGroup){
-	rg.GET("/",mocController) // get all && search
-	rg.GET("/:id",mocController) // get one by id
-	rg.POST("/",mocController) // create one
-	rg.PATCH("/:id",mocController) // update fields
-	rg.PUT("/:id",mocController) // replace one
-	rg.DELETE("/:id",mocController) // delete one
+func productRouts(rg *gin.RouterGroup) {
+	rg.GET("/", mocController)       // get all && search
+	rg.GET("/:id", mocController)    // get one by id
+	rg.POST("/", mocController)      // create one
+	rg.PATCH("/:id", mocController)  // update fields
+	rg.PUT("/:id", mocController)    // replace one
+	rg.DELETE("/:id", mocController) // delete one
 }
 
 // category router
-func categoryRouter(rg *gin.RouterGroup){
-	rg.GET("/",mocController) // get all && search
-	rg.GET("/:id",mocController) // get one by id
-	rg.POST("/",mocController) // create one
-	rg.PATCH("/:id",mocController) // update fields
-	rg.PUT("/:id",mocController) // replace one
-	rg.DELETE("/:id",mocController) // delete one
+func categoryRouter(rg *gin.RouterGroup) {
+	rg.GET("/", mocController)       // get all && search
+	rg.GET("/:id", mocController)    // get one by id
+	rg.POST("/", mocController)      // create one
+	rg.PATCH("/:id", mocController)  // update fields
+	rg.PUT("/:id", mocController)    // replace one
+	rg.DELETE("/:id", mocController) // delete one
 }
 
 // cart router
-func cartRouter(rg *gin.RouterGroup){
-	rg.GET("/",mocController) // get all && search
-	rg.GET("/:id",mocController) // get one by id
-	rg.POST("/",mocController) // create one
-	rg.PATCH("/:id",mocController) // update fields
-	rg.PUT("/:id",mocController) // replace one
-	rg.DELETE("/:id",mocController) // delete one
+func cartRouter(rg *gin.RouterGroup) {
+	rg.GET("/", mocController)       // get all && search
+	rg.GET("/:id", mocController)    // get one by id
+	rg.POST("/", mocController)      // create one
+	rg.PATCH("/:id", mocController)  // update fields
+	rg.PUT("/:id", mocController)    // replace one
+	rg.DELETE("/:id", mocController) // delete one
 }
 
-// order router 
-func orderRouter(rg *gin.RouterGroup){
-	rg.GET("/",mocController) // get all && search
-	rg.GET("/:id",mocController) // get one by id
-	rg.POST("/",mocController) // create one
-	rg.PATCH("/:id",mocController) // update fields
-	rg.PUT("/:id",mocController) // replace one
-	rg.DELETE("/:id",mocController) // delete one
+// order router
+func orderRouter(rg *gin.RouterGroup) {
+	rg.GET("/", mocController)       // get all && search
+	rg.GET("/:id", mocController)    // get one by id
+	rg.POST("/", mocController)      // create one
+	rg.PATCH("/:id", mocController)  // update fields
+	rg.PUT("/:id", mocController)    // replace one
+	rg.DELETE("/:id", mocController) // delete one
 }

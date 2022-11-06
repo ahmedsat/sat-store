@@ -1,0 +1,72 @@
+[
+  {
+    "_id": "87cecfbc-ad03-4a55-a5f4-f5ebfeb38c26",
+    "colId": "e93c024f-4605-42d6-8cae-007abfd84695",
+    "containerId": "",
+    "name": "login",
+    "url": "{{user}}/login",
+    "method": "POST",
+    "sortNum": 10000,
+    "created": "2022-11-06T20:10:01.880Z",
+    "modified": "2022-11-06T20:11:46.777Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"username\":\"ahmedsat\",\n  \"password\":\"ahmedsat\"\n}",
+      "form": []
+    },
+    "tests": [
+      {
+        "type": "set-env-var",
+        "custom": "json.token",
+        "action": "setto",
+        "value": "{{token}}"
+      }
+    ]
+  },
+  {
+    "_id": "7ba3deb1-c1b3-4d0b-9f2d-e8a18bd79567",
+    "colId": "e93c024f-4605-42d6-8cae-007abfd84695",
+    "containerId": "",
+    "name": "register",
+    "url": "{{user}}/register",
+    "method": "POST",
+    "sortNum": 20000,
+    "created": "2022-11-06T20:12:52.650Z",
+    "modified": "2022-11-06T20:15:16.695Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n    \"name\":\"Ahmed Hassan\",\n    \"email\":\"ahmedsat@gmail.com\",\n    \"username\":\"ahmedsat\",\n    \"password\":\"ahmedsat\"\n}",
+      "form": []
+    },
+    "tests": [
+      {
+        "type": "set-env-var",
+        "custom": "json.token",
+        "action": "setto",
+        "value": "{{token}}"
+      }
+    ]
+  },
+  {
+    "_id": "54c57dbc-0981-451e-84e2-2b65d1783ee0",
+    "colId": "e93c024f-4605-42d6-8cae-007abfd84695",
+    "containerId": "",
+    "name": "get current user",
+    "url": "{{user}}",
+    "method": "GET",
+    "sortNum": 20000,
+    "created": "2022-11-06T20:16:04.679Z",
+    "modified": "2022-11-06T20:18:28.676Z",
+    "headers": [],
+    "params": [],
+    "auth": {
+      "type": "bearer",
+      "bearer": "{{token}}"
+    },
+    "tests": []
+  }
+]

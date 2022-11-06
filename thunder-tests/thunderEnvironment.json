@@ -1,0 +1,25 @@
+[
+  {
+    "_id": "a14a199b-15f2-4a75-a26d-648a85f5defb",
+    "name": "main",
+    "default": true,
+    "sortNum": 10000,
+    "created": "2022-11-06T20:06:35.248Z",
+    "modified": "2022-11-06T20:11:46.775Z",
+    "data": [
+      {
+        "name": "root",
+        "value": "https://ahmedsat-miniature-winner-777794r49prfxv4r-{{PORT}}.preview.app.github.dev"
+      },
+      {
+        "name": "user",
+        "value": "{{root}}/api/v1/user"
+      },
+      {
+        "name": "token",
+        "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFobWVkc2F0IiwiZW1haWwiOiJhaG1lZHNhdDMwM0BHbWFpbC5jb20iLCJwcml2aWxlZ2VzIjoiIiwiZXhwIjoxNjY4MDI0NzA2fQ.5CbGnNoGJRmGjjtu_ggbklmeedxldwS3yCRQY2j4sM8"
+      }
+    ],
+    "envFile": "../.env"
+  }
+]
