@@ -35,15 +35,16 @@ i wrote it as a training
   - [x] products
   - [x] cart
 - [ ] create routs
-  - [ ] setup routs gropes
-  - [ ] user routs
-    - [ ] login
-    - [ ] register
-    - [ ] get current user
+  - [x] setup routs gropes
+  - [x] user routs
+    - [x] login
+    - [x] register
+    - [x] get current user
   - [ ] product routs
   - [ ] category routs
   - [ ] cart routs
-- [ ] setup auth system ( JWT )
+- [x] setup auth system ( JWT )
+- [ ] request validation
 - [ ] error handling
   - [ ] UNIQUE constraint failed: users.email
 

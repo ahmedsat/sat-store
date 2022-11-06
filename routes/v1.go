@@ -13,5 +13,7 @@ func V1(rg *gin.RouterGroup) {
 
 func userRouts(rg *gin.RouterGroup) {
 
+	rg.GET("/", userController.GetCurrentUser)
+	rg.POST("/login", userController.Login)
 	rg.POST("/register", userController.Register)
 }

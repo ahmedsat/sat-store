@@ -43,16 +43,8 @@ func Register(c *gin.Context) {
 		return
 	}
 
-	// TEST
-	claims, err := auth.ValidateToken(token)
-	if err != nil {
-		println(err.Error())
-	}
-	// END TEST
-
 	c.JSON(http.StatusOK, gin.H{
-		"user":   user,
-		"token":  token,
-		"claims": claims,
+		"user":  user,
+		"token": token,
 	})
 }
