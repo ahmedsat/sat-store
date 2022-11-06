@@ -34,15 +34,46 @@ i wrote it as a training
   - [x] categories
   - [x] products
   - [x] cart
-- [ ] create routs
+- [x] create routs
   - [x] setup routs gropes
   - [x] user routs
     - [x] login
     - [x] register
     - [x] get current user
-  - [ ] product routs
-  - [ ] category routs
-  - [ ] cart routs
+  - [x] product routs
+    - [x] list all products
+    - [x] search for product
+    - [x] get one by id
+    - [x] create new product
+    - [x] update product
+    - [x] delete product
+  - [x] category routs
+    - [x] list all categories
+    - [x] search for category
+    - [x] get one by id
+    - [x] create new category
+    - [x] update category
+    - [x] delete category
+  - [x] cart routs
+    - [x] list all cart items
+    - [x] search for cart item
+    - [x] get one by id
+    - [x] create new cart item
+    - [x] update cart item
+    - [x] delete cart item
+  - [x] order routs
+    - [x] list all orders
+    - [x] search for order
+    - [x] get one by id
+    - [x] create new order
+    - [x] update order
+    - [x] delete order
+- [ ] create controllers
+  - [ ] user controller
+  - [ ] product controller
+  - [ ] category controller
+  - [ ] cart controller
+  - [ ] order controller
 - [x] setup auth system ( JWT )
 - [ ] request validation
 - [ ] error handling
