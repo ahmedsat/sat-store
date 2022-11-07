@@ -44,7 +44,8 @@ func Register(c *gin.Context) {
 	}
 
 	c.JSON(http.StatusOK, gin.H{
-		"user":  user,
-		"token": token,
+		"name":     user.Name,
+		"username": user.Username,
+		"token":    token,
 	})
 }

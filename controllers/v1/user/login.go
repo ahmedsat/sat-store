@@ -2,7 +2,6 @@ package userController
 
 import (
 	"net/http"
-	"os"
 
 	"github.com/ahmedsat/sat-store/auth"
 	"github.com/ahmedsat/sat-store/database"
@@ -47,8 +46,8 @@ func Login(c *gin.Context) {
 	}
 
 	c.JSON(http.StatusOK, gin.H{
-		"user":  user,
-		"token": token,
-		"os":    os.Getenv("token"),
+		"name":     user.Name,
+		"username": user.Username,
+		"token":    token,
 	})
 }
