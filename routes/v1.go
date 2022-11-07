@@ -2,6 +2,7 @@ package routes
 
 import (
 	userController "github.com/ahmedsat/sat-store/controllers/v1/user"
+	"github.com/ahmedsat/sat-store/middlewares"
 	"github.com/gin-gonic/gin"
 )
 
@@ -17,7 +18,7 @@ func V1(rg *gin.RouterGroup) {
 
 // user router
 func userRouts(rg *gin.RouterGroup) {
-	rg.GET("/", mocController)
+	rg.GET("/", middlewares.Auth(), userController.GetCurrentUser)
 	rg.POST("/login", userController.Login)
 	rg.POST("/register", userController.Register)
 }

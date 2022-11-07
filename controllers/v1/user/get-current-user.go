@@ -7,5 +7,9 @@ import (
 )
 
 func GetCurrentUser(c *gin.Context) {
-	c.JSON(http.StatusOK, "Get Current User")
+	v, ok := c.Get("userID")
+	c.JSON(http.StatusOK, gin.H{
+		"status": ok,
+		"value":  v,
+	})
 }

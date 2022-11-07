@@ -60,12 +60,13 @@
     "method": "GET",
     "sortNum": 20000,
     "created": "2022-11-06T20:16:04.679Z",
-    "modified": "2022-11-06T20:18:28.676Z",
+    "modified": "2022-11-07T11:50:12.648Z",
     "headers": [],
     "params": [],
     "auth": {
       "type": "bearer",
-      "bearer": "{{token}}"
+      "bearer": "{{token}}",
+      "bearerPrefix": "{{JWT_BEARER}}"
     },
     "tests": []
   }

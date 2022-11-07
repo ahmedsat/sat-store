@@ -13,10 +13,8 @@ var jwtKey = []byte(os.Getenv("JWT_SECRET_KEY"))
 
 // structure for claims in JWT
 type JWTClaim struct {
-	Username   string `json:"username"`
-	Email      string `json:"email"`
-	Privileges string `json:"privileges"`
-
+	ID       uint   `gorm:"primarykey"`
+	Username string `json:"username"`
 	jwt.StandardClaims
 }
 
@@ -26,9 +24,8 @@ func GenerateJWT(user models.User) (tokenString string, err error) {
 
 	// destruct user to claims
 	claims := &JWTClaim{
-		Email:      user.Email,
-		Username:   user.Username,
-		Privileges: user.Privileges,
+		ID:       user.ID,
+		Username: user.Username,
 		StandardClaims: jwt.StandardClaims{
 			ExpiresAt: expirationTime.Unix(),
 		},
