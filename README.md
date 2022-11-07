@@ -131,7 +131,7 @@ i wrote it as a training
 ##### Request 
   ``` 
   head : {
-    token,
+    Authorization, #token
   }
   ```
 
@@ -141,6 +141,5 @@ i wrote it as a training
     name,
     email,
     username,
-    token,
   }
   ```

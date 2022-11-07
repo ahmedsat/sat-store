@@ -3,13 +3,26 @@ package userController
 import (
 	"net/http"
 
+	"github.com/ahmedsat/sat-store/database"
+	"github.com/ahmedsat/sat-store/models"
 	"github.com/gin-gonic/gin"
 )
 
 func GetCurrentUser(c *gin.Context) {
-	v, ok := c.Get("userID")
+	id, ok := c.Get("userID")
+	if !ok {
+		c.JSON(http.StatusUnauthorized, gin.H{
+			"err": "you net to login first",
+		})
+	}
+
+	user := models.User{}
+
+	database.Instance.First(&user, id)
+
 	c.JSON(http.StatusOK, gin.H{
-		"status": ok,
-		"value":  v,
+		"name":     user.Name,
+		"email":    user.Email,
+		"username": user.Username,
 	})
 }
