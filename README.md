@@ -34,12 +34,16 @@ i wrote it as a training
   - [x] categories
   - [x] products
   - [x] cart
-- [x] create routs
+- [ ] create routs
   - [x] setup routs gropes
-  - [x] user routs
+  - [ ] user routs
     - [x] login
     - [x] register
     - [x] get current user
+    - [ ] list all users
+    - [ ] search for user
+    - [ ] update user
+    - [ ] delete user
   - [x] product routs
     - [x] list all products
     - [x] search for product

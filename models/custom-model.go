@@ -6,5 +6,5 @@ import (
 
 type CustomModel struct {
 	gorm.Model
-	Name string `json:"name"`
+	Name string `json:"name" gorm:"default:no name"`
 }

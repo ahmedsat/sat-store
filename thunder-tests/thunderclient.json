@@ -56,11 +56,11 @@
     "colId": "e93c024f-4605-42d6-8cae-007abfd84695",
     "containerId": "",
     "name": "get current user",
-    "url": "{{user}}",
+    "url": "{{user}}/me",
     "method": "GET",
     "sortNum": 20000,
     "created": "2022-11-06T20:16:04.679Z",
-    "modified": "2022-11-07T11:50:12.648Z",
+    "modified": "2022-11-08T11:26:45.031Z",
     "headers": [],
     "params": [],
     "auth": {

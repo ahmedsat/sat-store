@@ -8,5 +8,5 @@ type Order struct {
 
 	CartItems []CartItem `json:"cartItems" gorm:"foreignKey:ID;"`
 
-	Status string `sql:"type:ENUM('waiting', 'packaging','shipping','done')" json:"status"`
+	Status string `sql:"type:ENUM('waiting', 'packaging','shipping','done')" json:"status" gorm:"default:waiting"`
 }

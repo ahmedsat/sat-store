@@ -4,12 +4,12 @@ import (
 	"golang.org/x/crypto/bcrypt"
 )
 
-// type privileges string
+type privileges string
 
-// const (
-// 	USER  privileges = "USER"
-// 	ADMEN privileges = "ADMEN"
-// )
+const (
+	USER  privileges = "USER"
+	ADMEN privileges = "ADMEN"
+)
 
 type User struct {
 	CustomModel
@@ -20,7 +20,7 @@ type User struct {
 	Phone    string `json:"Phone"`
 	Address  string `json:"address"`
 
-	Privileges string `sql:"type:ENUM('USER', 'ADMIN')" json:"privileges"`
+	Privileges string `sql:"type:ENUM('USER', 'ADMIN')" json:"privileges" gorm:"default:USER"`
 }
 
 func (user *User) HashPassword() error {
