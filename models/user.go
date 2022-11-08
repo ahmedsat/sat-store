@@ -8,7 +8,7 @@ type privileges string
 
 const (
 	USER  privileges = "USER"
-	ADMEN privileges = "ADMEN"
+	ADMEN privileges = "ADMIN"
 )
 
 type User struct {

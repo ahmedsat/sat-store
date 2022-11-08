@@ -34,12 +34,12 @@
     "method": "POST",
     "sortNum": 20000,
     "created": "2022-11-06T20:12:52.650Z",
-    "modified": "2022-11-06T20:15:16.695Z",
+    "modified": "2022-11-08T12:42:29.478Z",
     "headers": [],
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\n    \"name\":\"Ahmed Hassan\",\n    \"email\":\"ahmedsat@gmail.com\",\n    \"username\":\"ahmedsat\",\n    \"password\":\"ahmedsat\"\n}",
+      "raw": "{\n    \"name\":\"Ahmed Hassan\",\n    \"email\":\"ahmedsat5@gmail.com\",\n    \"username\":\"ahmedsat5\",\n    \"password\":\"ahmedsat\"\n}",
       "form": []
     },
     "tests": [
@@ -61,6 +61,25 @@
     "sortNum": 20000,
     "created": "2022-11-06T20:16:04.679Z",
     "modified": "2022-11-08T11:26:45.031Z",
+    "headers": [],
+    "params": [],
+    "auth": {
+      "type": "bearer",
+      "bearer": "{{token}}",
+      "bearerPrefix": "{{JWT_BEARER}}"
+    },
+    "tests": []
+  },
+  {
+    "_id": "5a8bc7a5-408c-43d3-8cb7-8badf9843c72",
+    "colId": "e93c024f-4605-42d6-8cae-007abfd84695",
+    "containerId": "",
+    "name": "get all users",
+    "url": "{{user}}/",
+    "method": "GET",
+    "sortNum": 30000,
+    "created": "2022-11-08T12:26:12.367Z",
+    "modified": "2022-11-08T12:28:16.879Z",
     "headers": [],
     "params": [],
     "auth": {
