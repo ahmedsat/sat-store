@@ -34,12 +34,12 @@
     "method": "POST",
     "sortNum": 20000,
     "created": "2022-11-06T20:12:52.650Z",
-    "modified": "2022-11-09T14:19:47.307Z",
+    "modified": "2022-11-09T19:57:46.781Z",
     "headers": [],
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\n    \"name\":\"Ahmed Hassan\",\n    \"email\":\"ahmedsat6@gmail.com\",\n    \"username\":\"ahmedsat6\",\n    \"password\":\"ahmedsat\"\n}",
+      "raw": "{\n    \n    \"email\":\"zs255646@gmail.com\",\n    \"username\":\"zs255646\",\n    \"password\":\"ahmedsat\",\n    \"Phone\":\"555555555555\"\n}",
       "form": []
     },
     "tests": [
@@ -94,21 +94,40 @@
     "colId": "e93c024f-4605-42d6-8cae-007abfd84695",
     "containerId": "",
     "name": "search users",
-    "url": "{{user}}/?name=Ahmed Hassan&id=500",
+    "url": "{{user}}/?Phone=555555555555",
     "method": "GET",
     "sortNum": 40000,
     "created": "2022-11-09T12:32:33.807Z",
-    "modified": "2022-11-09T14:55:57.021Z",
+    "modified": "2022-11-09T20:16:30.136Z",
     "headers": [],
     "params": [
       {
         "name": "name",
-        "value": "Ahmed Hassan",
+        "value": "ziad ",
+        "isDisabled": true,
         "isPath": false
       },
       {
         "name": "id",
-        "value": "500",
+        "value": "3",
+        "isDisabled": true,
+        "isPath": false
+      },
+      {
+        "name": "email",
+        "value": "ali92@gmail.com",
+        "isDisabled": true,
+        "isPath": false
+      },
+      {
+        "name": "username",
+        "value": "ahmedsat",
+        "isDisabled": true,
+        "isPath": false
+      },
+      {
+        "name": "Phone",
+        "value": "555555555555",
         "isPath": false
       }
     ],

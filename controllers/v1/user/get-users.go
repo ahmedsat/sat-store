@@ -7,6 +7,7 @@ import (
 	"github.com/ahmedsat/sat-store/models"
 	"github.com/ahmedsat/sat-store/utils"
 	"github.com/gin-gonic/gin"
+	"gorm.io/gorm"
 )
 
 func GetUsers(c *gin.Context) {
@@ -16,9 +17,8 @@ func GetUsers(c *gin.Context) {
 	// searchQuery := make(map[string]any)
 	c.ShouldBindQuery(&searchQuery)
 
-	// tests
-
-	// end tests
+	// turn search query map to string
+	searchConditions, searchValues := models.UserSearchQueriesParser(searchQuery)
 
 	// get user that was provided by auth middleware
 	loggedUser, err := utils.GetUser(c)
@@ -40,7 +40,12 @@ func GetUsers(c *gin.Context) {
 	}
 
 	users := []models.User{}
-	result := database.Instance.Find(&users)
+	var result *gorm.DB
+	if len(searchValues) > 0 {
+		result = database.Instance.Where(searchConditions, searchValues).Find(&users)
+	} else {
+		result = database.Instance.Find(&users)
+	}
 	if result.Error != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{
 			"err": result.Error.Error(),
@@ -50,9 +55,11 @@ func GetUsers(c *gin.Context) {
 	}
 
 	c.JSON(http.StatusOK, gin.H{
-		"q":     searchQuery,
+		// "q":     searchConditions,
+		// "v":     searchValues,
 		"count": len(users),
 		"users": users,
+		// "x":     searchQuery,
 	})
 
 }
