@@ -17,6 +17,9 @@ func main() {
 
 	database.Conn()
 
+	// save log in file
+	// utils.LogFile("gin.log", true)
+
 	r := gin.Default() // default gin engin
 
 	r.Use(middlewares.Logger())

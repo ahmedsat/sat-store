@@ -17,5 +17,11 @@
 # .env file
 .env
 
+# log files
+*.log
+
+# database files
+*.db
+
 # .vscode directory
 .vscode/
