@@ -18,7 +18,7 @@ func V1(rg *gin.RouterGroup) {
 
 // user router
 func userRouts(rg *gin.RouterGroup) {
-	rg.GET("/", middlewares.Auth(), userController.GetAllUsers)
+	rg.GET("/", middlewares.Auth(), userController.GetUsers)
 	rg.GET("/me", middlewares.Auth(), userController.GetCurrentUser)
 	rg.POST("/login", userController.Login)
 	rg.POST("/register", userController.Register)

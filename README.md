@@ -40,8 +40,9 @@ i wrote it as a training
     - [x] login
     - [x] register
     - [x] get current user
-    - [ ] list all users
-    - [ ] search for user
+    - [x] list all users
+    - [ ] search for multi users
+    - [ ] search for one user
     - [ ] update user
     - [ ] delete user
   - [x] product routs

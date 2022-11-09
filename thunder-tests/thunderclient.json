@@ -88,5 +88,35 @@
       "bearerPrefix": "{{JWT_BEARER}}"
     },
     "tests": []
+  },
+  {
+    "_id": "1e6895a3-c1db-4322-89dd-89ab70d0ba65",
+    "colId": "e93c024f-4605-42d6-8cae-007abfd84695",
+    "containerId": "",
+    "name": "search users",
+    "url": "{{user}}/?name=ahmed&id=500",
+    "method": "GET",
+    "sortNum": 40000,
+    "created": "2022-11-09T12:32:33.807Z",
+    "modified": "2022-11-09T12:48:02.469Z",
+    "headers": [],
+    "params": [
+      {
+        "name": "name",
+        "value": "ahmed",
+        "isPath": false
+      },
+      {
+        "name": "id",
+        "value": "500",
+        "isPath": false
+      }
+    ],
+    "auth": {
+      "type": "bearer",
+      "bearer": "{{token}}",
+      "bearerPrefix": "{{JWT_BEARER}}"
+    },
+    "tests": []
   }
 ]

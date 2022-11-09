@@ -2,14 +2,40 @@ package userController
 
 import (
 	"net/http"
+	"time"
 
 	"github.com/ahmedsat/sat-store/database"
 	"github.com/ahmedsat/sat-store/models"
 	"github.com/ahmedsat/sat-store/utils"
 	"github.com/gin-gonic/gin"
+	"gorm.io/gorm"
 )
 
-func GetAllUsers(c *gin.Context) {
+type searchQueries struct {
+	ID         uint           `gorm:"primarykey" form:"id"`
+	CreatedAt  time.Time      `form:"created_at"`
+	UpdatedAt  time.Time      `form:"updated_at"`
+	DeletedAt  gorm.DeletedAt `gorm:"index"`
+	Name       string         `form:"name" gorm:"default:no name"`
+	Username   string         `form:"username" gorm:"unique"`
+	Email      string         `form:"email" gorm:"unique"`
+	Password   string         `form:"password"`
+	Phone      string         `form:"Phone"`
+	Address    string         `form:"address"`
+	Privileges string         `form:"privileges"`
+}
+
+func GetUsers(c *gin.Context) {
+
+	// get search data
+	s := searchQueries{}
+	c.Bind(&s)
+
+	// tests
+
+	println(s.ID)
+
+	// end tests
 
 	// get user that was provided by auth middleware
 	user, err := utils.GetUser(c)
