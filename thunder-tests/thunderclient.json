@@ -34,12 +34,12 @@
     "method": "POST",
     "sortNum": 20000,
     "created": "2022-11-06T20:12:52.650Z",
-    "modified": "2022-11-08T12:42:29.478Z",
+    "modified": "2022-11-09T14:19:47.307Z",
     "headers": [],
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\n    \"name\":\"Ahmed Hassan\",\n    \"email\":\"ahmedsat5@gmail.com\",\n    \"username\":\"ahmedsat5\",\n    \"password\":\"ahmedsat\"\n}",
+      "raw": "{\n    \"name\":\"Ahmed Hassan\",\n    \"email\":\"ahmedsat6@gmail.com\",\n    \"username\":\"ahmedsat6\",\n    \"password\":\"ahmedsat\"\n}",
       "form": []
     },
     "tests": [
@@ -94,16 +94,16 @@
     "colId": "e93c024f-4605-42d6-8cae-007abfd84695",
     "containerId": "",
     "name": "search users",
-    "url": "{{user}}/?name=ahmed&id=500",
+    "url": "{{user}}/?name=Ahmed Hassan&id=500",
     "method": "GET",
     "sortNum": 40000,
     "created": "2022-11-09T12:32:33.807Z",
-    "modified": "2022-11-09T12:48:02.469Z",
+    "modified": "2022-11-09T14:55:57.021Z",
     "headers": [],
     "params": [
       {
         "name": "name",
-        "value": "ahmed",
+        "value": "Ahmed Hassan",
         "isPath": false
       },
       {
@@ -112,6 +112,11 @@
         "isPath": false
       }
     ],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"username\": \"hi\"\n}",
+      "form": []
+    },
     "auth": {
       "type": "bearer",
       "bearer": "{{token}}",

@@ -14,13 +14,13 @@ const (
 type User struct {
 	CustomModel
 
-	Username string `json:"username" form:"username" gorm:"unique" `
-	Email    string `json:"email" form:"email" gorm:"unique" `
-	Password string `json:"password" form:"password" `
-	Phone    string `json:"Phone" form:"Phone" `
-	Address  string `json:"address" form:"address" `
+	Username string `json:"username" gorm:"unique"`
+	Email    string `json:"email" gorm:"unique"`
+	Password string `json:"password"`
+	Phone    string `json:"Phone"`
+	Address  string `json:"address"`
 
-	Privileges string `sql:"type:ENUM('USER', 'ADMIN')" json:"privileges" form:"privileges" gorm:"default:USER" `
+	Privileges string `sql:"type:ENUM('USER', 'ADMIN')" json:"privileges" gorm:"default:USER"`
 }
 
 func (user *User) HashPassword() error {

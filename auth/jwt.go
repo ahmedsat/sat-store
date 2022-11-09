@@ -20,7 +20,7 @@ type JWTClaim struct {
 
 func GenerateJWT(user models.User) (tokenString string, err error) {
 
-	expirationTime := time.Now().Add(3 * time.Minute) // token expire after 3 days
+	expirationTime := time.Now().Add(3 * 24 * time.Hour) // token expire after 3 days
 
 	// destruct user to claims
 	claims := &JWTClaim{

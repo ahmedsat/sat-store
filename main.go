@@ -4,7 +4,6 @@ import (
 	"os"
 
 	"github.com/ahmedsat/sat-store/database"
-	"github.com/ahmedsat/sat-store/middlewares"
 	"github.com/ahmedsat/sat-store/routes"
 	"github.com/gin-gonic/gin"
 
@@ -22,7 +21,7 @@ func main() {
 
 	r := gin.Default() // default gin engin
 
-	r.Use(middlewares.Logger())
+	// r.Use(middlewares.Logger())
 
 	if AutoMigrate == "TRUE" {
 		database.MigrateAll()
