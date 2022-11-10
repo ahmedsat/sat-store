@@ -94,22 +94,22 @@
     "colId": "e93c024f-4605-42d6-8cae-007abfd84695",
     "containerId": "",
     "name": "search users",
-    "url": "{{user}}/?Phone=555555555555",
+    "url": "{{user}}/",
     "method": "GET",
     "sortNum": 40000,
     "created": "2022-11-09T12:32:33.807Z",
-    "modified": "2022-11-09T20:16:30.136Z",
+    "modified": "2022-11-10T18:08:15.332Z",
     "headers": [],
     "params": [
       {
         "name": "name",
-        "value": "ziad ",
+        "value": "~no",
         "isDisabled": true,
         "isPath": false
       },
       {
         "name": "id",
-        "value": "3",
+        "value": "8",
         "isDisabled": true,
         "isPath": false
       },
@@ -127,7 +127,14 @@
       },
       {
         "name": "Phone",
-        "value": "555555555555",
+        "value": "~555555555555",
+        "isDisabled": true,
+        "isPath": false
+      },
+      {
+        "name": "privileges",
+        "value": "USER",
+        "isDisabled": true,
         "isPath": false
       }
     ],

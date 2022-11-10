@@ -14,8 +14,7 @@ func GetUsers(c *gin.Context) {
 
 	// get search data
 	searchQuery := models.UserSearchQueries{}
-	// searchQuery := make(map[string]any)
-	c.ShouldBindQuery(&searchQuery)
+	c.Bind(&searchQuery)
 
 	// turn search query map to string
 	searchConditions, searchValues := models.UserSearchQueriesParser(searchQuery)
@@ -41,8 +40,16 @@ func GetUsers(c *gin.Context) {
 
 	users := []models.User{}
 	var result *gorm.DB
+
 	if len(searchValues) > 0 {
-		result = database.Instance.Where(searchConditions, searchValues).Find(&users)
+
+		// convert searchValues from []string []interface{}
+		newSearchValues := make([]interface{}, len(searchValues))
+		for i, v := range searchValues {
+			newSearchValues[i] = v
+		}
+
+		result = database.Instance.Where(searchConditions, newSearchValues...).Find(&users)
 	} else {
 		result = database.Instance.Find(&users)
 	}
