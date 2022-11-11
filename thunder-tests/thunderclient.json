@@ -94,19 +94,13 @@
     "colId": "e93c024f-4605-42d6-8cae-007abfd84695",
     "containerId": "",
     "name": "search users",
-    "url": "{{user}}/",
+    "url": "{{user}}/?name=~no",
     "method": "GET",
     "sortNum": 40000,
     "created": "2022-11-09T12:32:33.807Z",
-    "modified": "2022-11-10T18:08:15.332Z",
+    "modified": "2022-11-11T14:53:10.911Z",
     "headers": [],
     "params": [
-      {
-        "name": "name",
-        "value": "~no",
-        "isDisabled": true,
-        "isPath": false
-      },
       {
         "name": "id",
         "value": "8",
@@ -123,6 +117,11 @@
         "name": "username",
         "value": "ahmedsat",
         "isDisabled": true,
+        "isPath": false
+      },
+      {
+        "name": "name",
+        "value": "~no",
         "isPath": false
       },
       {

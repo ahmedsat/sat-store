@@ -22,6 +22,14 @@ type UserSearchQueries struct {
 	// DeletedAt gorm.DeletedAt `gorm:"index"`
 }
 
+var prefixList = map[string]bool{
+	"=": true,
+	">": true,
+	"<": true,
+	"!": true,
+	"~": true,
+}
+
 func UserSearchQueriesParser(sq UserSearchQueries) (searchPrepare string, searchValues []string) {
 
 	defer func(SearchConditionsPrepare *string, SearchConditionsValues []string) {
@@ -96,6 +104,9 @@ func UserSearchQueriesParser(sq UserSearchQueries) (searchPrepare string, search
 
 func extractCompareMark(input string) (compareMark, searchKey string) {
 
+	if !prefixList[string(input[0])] {
+		input = "=" + input
+	}
 	compareMark, searchKey = getPrefix("", input)
 	return
 }
@@ -103,13 +114,6 @@ func extractCompareMark(input string) (compareMark, searchKey string) {
 func getPrefix(prefix, input string) (newPrefix, newInput string) {
 	newPrefix = prefix
 	newInput = input
-	prefixList := map[string]bool{
-		"=": true,
-		">": true,
-		"<": true,
-		"!": true,
-		"~": true,
-	}
 
 	if prefixList[string(input[0])] {
 		newPrefix = prefix + string(input[0])

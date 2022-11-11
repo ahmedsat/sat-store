@@ -21,7 +21,7 @@
 *.log
 
 # database files
-*.db
+# *.db
 
 # .vscode directory
-.vscode/
+# .vscode/

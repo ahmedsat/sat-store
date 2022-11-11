@@ -16,7 +16,7 @@ func GetUsers(c *gin.Context) {
 	searchQuery := models.UserSearchQueries{}
 	c.Bind(&searchQuery)
 
-	// turn search query map to string
+	// turn search query object to string
 	searchConditions, searchValues := models.UserSearchQueriesParser(searchQuery)
 
 	// get user that was provided by auth middleware
