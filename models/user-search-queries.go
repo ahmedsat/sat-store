@@ -4,8 +4,15 @@ import (
 	"fmt"
 )
 
-var searchConditionsPrepare string
-var searchConditionsValues []string
+type searchConditions struct {
+	Prepare string
+	Values  []string
+}
+
+//	TODO :
+//		[ ] search by CreatedAt
+//		[ ] search by UpdatedAt
+//		[ ] search by DeletedAt
 
 type UserSearchQueries struct {
 	ID         uint   `form:"id"`
@@ -30,76 +37,80 @@ var prefixList = map[string]bool{
 	"~": true,
 }
 
-func UserSearchQueriesParser(sq UserSearchQueries) (searchPrepare string, searchValues []string) {
+// to see what happen if return a string instated of pointer of string
+// see this : "https://go.dev/play/p/cf_Cg_vtXpP"
+func UserSearchQueriesParser(sq UserSearchQueries) (*string, []string) {
 
-	defer func(SearchConditionsPrepare *string, SearchConditionsValues []string) {
+	searchConditionsObject := searchConditions{}
+
+	defer func(searchConditions *searchConditions) {
 
 		// if searchConditionsPrepare not empty
 		// remove " And" from the beginning
-		if searchConditionsPrepare != "" {
-			searchConditionsPrepare = searchConditionsPrepare[4:]
+		if searchConditions.Prepare != "" {
+			searchConditions.Prepare = searchConditions.Prepare[4:]
 		}
 		// move the value of searchConditionsPrepare to new function scoped variable,
-		// and reset it's value .
-		// ! this step is necessary because global variables will be remembered to next request
-		searchPrepare = searchConditionsPrepare
-		searchConditionsPrepare = ""
+		// // and reset it's value .
+		// // ! this step is necessary because global variables will be remembered to next request
+		// searchPrepare = searchConditionsPrepare
+		// searchConditionsPrepare = ""
 
-		// we have to do in searchConditionsValues the same as searchConditionsPrepare
-		searchValues = searchConditionsValues
-		searchConditionsValues = []string{}
-	}(&searchPrepare, searchValues)
+		// // we have to do in searchConditionsValues the same as searchConditionsPrepare
+		// searchValues = searchConditionsValues
+		// searchConditionsValues = []string{}
+	}(&searchConditionsObject)
 
 	// destruct ID
 	if sq.ID != 0 {
-		destructSearchField("="+fmt.Sprint(sq.ID), "id")
-		return
+		destructSearchField("="+fmt.Sprint(sq.ID), "id", &searchConditionsObject)
+		return &searchConditionsObject.Prepare, searchConditionsObject.Values
 	}
 
 	// destruct Username
 	if sq.Username != "" {
 
-		destructSearchField("="+sq.Username, "username")
-		return
+		destructSearchField("="+sq.Username, "username", &searchConditionsObject)
+		return &searchConditionsObject.Prepare, searchConditionsObject.Values
 
 	}
 
 	// destruct Email
 	if sq.Email != "" {
 
-		destructSearchField("="+sq.Email, "email")
-		return
+		destructSearchField("="+sq.Email, "email", &searchConditionsObject)
+		return &searchConditionsObject.Prepare, searchConditionsObject.Values
 
 	}
 
 	// destruct Phone
 	if sq.Phone != "" {
 
-		destructSearchField(sq.Phone, "phone")
+		destructSearchField(sq.Phone, "phone", &searchConditionsObject)
 
 	}
 
 	// destruct Name
 	if sq.Name != "" {
 
-		destructSearchField(sq.Name, "name")
+		destructSearchField(sq.Name, "name", &searchConditionsObject)
 
 	}
 
 	// destruct Address
 	if sq.Address != "" {
 
-		destructSearchField(sq.Address, "address")
+		destructSearchField(sq.Address, "address", &searchConditionsObject)
 
 	}
 
 	// destruct Privileges
 	if sq.Privileges != "" {
 
-		destructSearchField("="+sq.Privileges, "privileges")
+		destructSearchField("="+sq.Privileges, "privileges", &searchConditionsObject)
 
 	}
-	return
+	return &searchConditionsObject.Prepare, searchConditionsObject.Values
 }
 
 func extractCompareMark(input string) (compareMark, searchKey string) {
@@ -125,7 +136,7 @@ func getPrefix(prefix, input string) (newPrefix, newInput string) {
 	return
 }
 
-func destructSearchField(search, tableName string) {
+func destructSearchField(search, tableName string, searchConditions *searchConditions) {
 	compareMark, searchKey := extractCompareMark(search) // parsing requested search
 
 	// map available Compare Marks in search to SQL compare marks
@@ -145,12 +156,12 @@ func destructSearchField(search, tableName string) {
 
 	// if requested search prefix mach with map do sql request
 	if _, ok := availableCompareMarks[compareMark]; ok {
-		searchConditionsPrepare += fmt.Sprintf(" AND %s %s ?", tableName, availableCompareMarks[compareMark])
+		searchConditions.Prepare += fmt.Sprintf(" AND %s %s ?", tableName, availableCompareMarks[compareMark])
 		// if search request asks for same equal add wild card
 		if availableCompareMarks[compareMark] == "LIKE" {
-			searchConditionsValues = append(searchConditionsValues, "%"+searchKey+"%")
+			searchConditions.Values = append(searchConditions.Values, "%"+searchKey+"%")
 		} else {
-			searchConditionsValues = append(searchConditionsValues, searchKey)
+			searchConditions.Values = append(searchConditions.Values, searchKey)
 		}
 	}
 

@@ -49,7 +49,7 @@ func GetUsers(c *gin.Context) {
 			newSearchValues[i] = v
 		}
 
-		result = database.Instance.Where(searchConditions, newSearchValues...).Find(&users)
+		result = database.Instance.Where(*searchConditions, newSearchValues...).Find(&users)
 	} else {
 		result = database.Instance.Find(&users)
 	}
