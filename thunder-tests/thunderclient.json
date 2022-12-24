@@ -1,0 +1,152 @@
+[
+  {
+    "_id": "87cecfbc-ad03-4a55-a5f4-f5ebfeb38c26",
+    "colId": "e93c024f-4605-42d6-8cae-007abfd84695",
+    "containerId": "",
+    "name": "login",
+    "url": "{{user}}/login",
+    "method": "POST",
+    "sortNum": 10000,
+    "created": "2022-11-06T20:10:01.880Z",
+    "modified": "2022-11-06T20:11:46.777Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"username\":\"ahmedsat\",\n  \"password\":\"ahmedsat\"\n}",
+      "form": []
+    },
+    "tests": [
+      {
+        "type": "set-env-var",
+        "custom": "json.token",
+        "action": "setto",
+        "value": "{{token}}"
+      }
+    ]
+  },
+  {
+    "_id": "7ba3deb1-c1b3-4d0b-9f2d-e8a18bd79567",
+    "colId": "e93c024f-4605-42d6-8cae-007abfd84695",
+    "containerId": "",
+    "name": "register",
+    "url": "{{user}}/register",
+    "method": "POST",
+    "sortNum": 20000,
+    "created": "2022-11-06T20:12:52.650Z",
+    "modified": "2022-11-09T19:57:46.781Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n    \n    \"email\":\"zs255646@gmail.com\",\n    \"username\":\"zs255646\",\n    \"password\":\"ahmedsat\",\n    \"Phone\":\"555555555555\"\n}",
+      "form": []
+    },
+    "tests": [
+      {
+        "type": "set-env-var",
+        "custom": "json.token",
+        "action": "setto",
+        "value": "{{token}}"
+      }
+    ]
+  },
+  {
+    "_id": "54c57dbc-0981-451e-84e2-2b65d1783ee0",
+    "colId": "e93c024f-4605-42d6-8cae-007abfd84695",
+    "containerId": "",
+    "name": "get current user",
+    "url": "{{user}}/me",
+    "method": "GET",
+    "sortNum": 20000,
+    "created": "2022-11-06T20:16:04.679Z",
+    "modified": "2022-11-08T11:26:45.031Z",
+    "headers": [],
+    "params": [],
+    "auth": {
+      "type": "bearer",
+      "bearer": "{{token}}",
+      "bearerPrefix": "{{JWT_BEARER}}"
+    },
+    "tests": []
+  },
+  {
+    "_id": "5a8bc7a5-408c-43d3-8cb7-8badf9843c72",
+    "colId": "e93c024f-4605-42d6-8cae-007abfd84695",
+    "containerId": "",
+    "name": "get all users",
+    "url": "{{user}}/",
+    "method": "GET",
+    "sortNum": 30000,
+    "created": "2022-11-08T12:26:12.367Z",
+    "modified": "2022-11-08T12:28:16.879Z",
+    "headers": [],
+    "params": [],
+    "auth": {
+      "type": "bearer",
+      "bearer": "{{token}}",
+      "bearerPrefix": "{{JWT_BEARER}}"
+    },
+    "tests": []
+  },
+  {
+    "_id": "1e6895a3-c1db-4322-89dd-89ab70d0ba65",
+    "colId": "e93c024f-4605-42d6-8cae-007abfd84695",
+    "containerId": "",
+    "name": "search users",
+    "url": "{{user}}/?name=~no",
+    "method": "GET",
+    "sortNum": 40000,
+    "created": "2022-11-09T12:32:33.807Z",
+    "modified": "2022-11-15T13:02:39.595Z",
+    "headers": [],
+    "params": [
+      {
+        "name": "id",
+        "value": "8",
+        "isDisabled": true,
+        "isPath": false
+      },
+      {
+        "name": "email",
+        "value": "ali92@gmail.com",
+        "isDisabled": true,
+        "isPath": false
+      },
+      {
+        "name": "username",
+        "value": "ahmedsat",
+        "isDisabled": true,
+        "isPath": false
+      },
+      {
+        "name": "name",
+        "value": "~no",
+        "isPath": false
+      },
+      {
+        "name": "Phone",
+        "value": "~555555555555",
+        "isDisabled": true,
+        "isPath": false
+      },
+      {
+        "name": "privileges",
+        "value": "USER",
+        "isDisabled": true,
+        "isPath": false
+      }
+    ],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"username\": \"hi\"\n}",
+      "form": []
+    },
+    "auth": {
+      "type": "bearer",
+      "bearer": "{{token}}",
+      "bearerPrefix": "{{JWT_BEARER}}"
+    },
+    "tests": []
+  }
+]

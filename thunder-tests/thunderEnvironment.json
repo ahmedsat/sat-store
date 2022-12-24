@@ -1,0 +1,25 @@
+[
+  {
+    "_id": "a14a199b-15f2-4a75-a26d-648a85f5defb",
+    "name": "main",
+    "default": true,
+    "sortNum": 10000,
+    "created": "2022-11-06T20:06:35.248Z",
+    "modified": "2022-11-15T12:28:20.865Z",
+    "data": [
+      {
+        "name": "root",
+        "value": "https://ahmedsat-congenial-halibut-966694qxpv62qxp-{{PORT}}.preview.app.github.dev"
+      },
+      {
+        "name": "user",
+        "value": "{{root}}/api/v1/user"
+      },
+      {
+        "name": "token",
+        "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJJRCI6MSwidXNlcm5hbWUiOiJhaG1lZHNhdCIsImV4cCI6MTY2ODc3NDUwMH0.hrGwwSth6b_et7iH0MM_RNpBqSWlZpanxVl0zuNzi-0"
+      }
+    ],
+    "envFile": "../.env"
+  }
+]

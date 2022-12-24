@@ -1,62 +1,33 @@
 package main
 
 import (
+	"os"
+
 	"github.com/ahmedsat/sat-store/database"
+	"github.com/ahmedsat/sat-store/routes"
 	"github.com/gin-gonic/gin"
-	// _ "github.com/gwenn/gosqlite"
+
+	_ "github.com/joho/godotenv/autoload" // load .env file
 )
 
-//	type user struct {
-//		id        int
-//		name      string
-//		username  string
-//		email     string
-//		password  string
-//		privilege string
-//	}
-
 func main() {
+	AutoMigrate := os.Getenv("AUTO_MIGRATE")
+	addr := "localhost:" + os.Getenv("PORT")
 
-	// db, err := sql.Open("sqlite3", "database.db")
-	database.Connect("database.db")
-	database.Migrate()
+	database.Conn()
 
-	// if err != nil {
-	// 	log.Fatal(err)
-	// }
+	// save log in file
+	// utils.LogFile("gin.log", true)
 
-	// defer db.Close()
+	r := gin.Default() // default gin engin
 
-	// controllers.DB = db
+	// r.Use(middlewares.Logger())
 
-	r := gin.Default()
+	if AutoMigrate == "TRUE" {
+		database.MigrateAll()
+	}
 
-	// routes.GetRoutes(r)
-
-	r.Run("localhost:8080")
+	routes.RootRoutes(r)
+	r.Run(addr)
 
 }
-
-// func allUsers() ([]user, error) {
-// 	var users []user
-
-// 	rows, err := db.Query(`SELECT * FROM users`)
-// 	if err != nil {
-// 		log.Fatal(err)
-// 		return nil, err
-// 	}
-// 	defer rows.Close()
-
-// 	for rows.Next() {
-// 		var u user
-// 		if err = rows.Scan(&u.id, &u.name, &u.username, &u.email, &u.password, &u.privilege); err != nil {
-// 			return nil, err
-// 		}
-// 		users = append(users, u)
-// 	}
-
-// 	if err := rows.Err(); err != nil {
-// 		return nil, err
-// 	}
-// 	return users, nil
-// }
